@@ -68,19 +68,15 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void removeUserById(long id) {
-        Util util = new Util();
+
         Transaction transaction = null;
-        Session session = util.getSessionFactory().openSession();
+        Session session = Util.getSessionFactory().openSession();
         transaction = session.beginTransaction();
         User user = (User) session.get(User.class, id);
         session.delete(user);
         transaction.commit();
         session.close();
-        try {
-            util.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Override
@@ -104,6 +100,14 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void cleanUsersTable() {
+        Transaction transaction = null;
+
+        Session session = Util.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
+        String sql = "TRUNCATE usershibernate";
+        session.createSQLQuery(sql).addEntity(User.class).executeUpdate();
+        transaction.commit();
+        session.close();
 
     }
 }

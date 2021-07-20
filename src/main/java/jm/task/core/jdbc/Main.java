@@ -20,11 +20,12 @@ public class Main {
 //        userDao.cleanUsersTable();
 //        userDao.dropUsersTable();
         UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl();
-        userDaoHibernate.saveUser("Daulet", "Lepessov", (byte) 20);
-        userDaoHibernate.saveUser("Naruto", "Uzumaki", (byte) 16);
-        userDaoHibernate.saveUser("Ali", "Chert", (byte) 16);
-        List<User> list = userDaoHibernate.getAllUsers();
-        System.out.println(list);
+        userDaoHibernate.saveUser("dfsf", "Lepessov", (byte) 20);
+        userDaoHibernate.saveUser("dff", "Uzumaki", (byte) 16);
+        userDaoHibernate.saveUser("Agegeli", "Chert", (byte) 16);
+        userDaoHibernate.removeUserById(1);
+        userDaoHibernate.cleanUsersTable();
+
 
 
     }
